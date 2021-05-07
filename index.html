@@ -6,11 +6,16 @@
 </head>
 <style>
 
+* {
+    user-select: none;
+}
+
 #container {
     margin:0 auto;
     height:500px;
     width:1000px;
-    outline:1px solid black;
+    border:1px solid black;
+    border-radius: 5px;
     position:relative;
 }
 
@@ -18,9 +23,10 @@
     position:absolute; 
     top:0; 
     left:0; 
-    outline:none;
+    border:1px transparent;
     width:50px; 
     height:50px;
+    border-radius: 5px;
 }
 
 .footer{
@@ -33,9 +39,10 @@
 </style>
 <body>
 <div id="container">
+<img id="background" src="https://imgur.com/YZ0XTPi.gif" style="position:absolute;">
 <div id="block">
-<img id="ufo-right" src="https://imgur.com/msHZjxk.gif" width="50px" alt="ufo-right" style="position:absolute; background-color: white;">
-<img id="ufo-left" src="https://imgur.com/waEBuhZ.gif" width="50px" alt="ufo-left" style="position:absolute; background-color: white;">
+<img id="ufo-right" src="https://imgur.com/dk7YtgU.gif" width="50px" alt="ufo-right" style="position:absolute;">
+<img id="ufo-left" src="https://imgur.com/jZyZ6E3.gif" width="50px" alt="ufo-left" style="position:absolute; opacity:0">
 </div>
 </div>
 <script>
