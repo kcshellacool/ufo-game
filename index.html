@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<style>
+
+#container {
+    height:auto;
+    width:auto;
+    position:relative;
+}
+
+#block {
+    position:absolute; 
+    top:0; 
+    left:0; 
+    outline:none;
+    width:50px; 
+    height:50px;
+}
+
+</style>
+<body>
+<div id="container">
+<div id="block">
+<img id="ufo-right" src="https://imgur.com/msHZjxk.gif" width="50px" alt="ufo-right" style="position:absolute; background-color: white;">
+<img id="ufo-left" src="https://imgur.com/waEBuhZ.gif" width="50px" alt="ufo-left" style="position:absolute; background-color: white;">
+</div>
+</div>
+<script>
+var block=document.getElementById('block');
+var container=document.getElementById('container');
+var ufor=document.getElementById('ufo-right');
+var ufol=document.getElementById('ufo-left');
+
+var blockLeft = 0;
+var blockTop = 0;
+
+function anim(e){
+
+    if (e.keyCode==39) {
+        blockLeft +=5;
+        block.style.left = blockLeft + 'px';
+        ufol.style.opacity = 0;
+        ufor.style.opacity = 1;
+    }
+
+    if (e.keyCode==37) {
+        blockLeft -=5;
+        block.style.left = blockLeft + 'px';
+        ufor.style.opacity = 0;
+        ufol.style.opacity = 1;
+    }
+
+    if (e.keyCode==38) {
+        blockTop -=5;
+        block.style.top = blockTop + 'px';
+    }
+
+    if (e.keyCode==40) {
+        blockTop +=5;
+        block.style.top= blockTop + 'px';
+    }
+}
+
+document.onkeydown = anim;
+</script>
+</body>
+</html>
