@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html>
-
+<head>
+    <title>UFO GAME</title>
+</head>
 <style>
 
 #container {
-    height:auto;
-    width:auto;
+    height:500px;
+    width:1000px;
+    outline:1px solid black;
     position:relative;
 }
 
@@ -31,6 +34,8 @@ var block=document.getElementById('block');
 var container=document.getElementById('container');
 var ufor=document.getElementById('ufo-right');
 var ufol=document.getElementById('ufo-left');
+var maxwidth = 950;
+var maxheight = 450;
 
 var blockLeft = 0;
 var blockTop = 0;
@@ -38,27 +43,47 @@ var blockTop = 0;
 function anim(e){
 
     if (e.keyCode==39) {
-        blockLeft +=5;
+        blockLeft +=10;
+        if (blockLeft >0 && blockLeft <= maxwidth) {
         block.style.left = blockLeft + 'px';
+        }
+        if (blockLeft >= maxwidth) {
+            blockLeft = 950;
+            block.style.left = 950 + 'px';
+        }
         ufol.style.opacity = 0;
         ufor.style.opacity = 1;
     }
 
     if (e.keyCode==37) {
-        blockLeft -=5;
+        blockLeft -=10;
         block.style.left = blockLeft + 'px';
+        if (blockLeft <= 0) {
+            blockLeft = 0;
+            block.style.left = 0 + 'px';
+        }
         ufor.style.opacity = 0;
         ufol.style.opacity = 1;
     }
 
     if (e.keyCode==38) {
-        blockTop -=5;
+        blockTop -=10;
         block.style.top = blockTop + 'px';
+        if (blockTop <= 0) {
+            blockTop = 0;
+            block.style.top= 0 + 'px';
+        }
     }
 
     if (e.keyCode==40) {
-        blockTop +=5;
-        block.style.top= blockTop + 'px';
+        blockTop +=10;
+        if (blockTop >0 && blockTop <=maxheight) {
+            block.style.top= blockTop + 'px';
+        }
+        if (blockTop >=maxheight) {
+            blockTop = 450;
+            block.style.top = 450 + 'px';
+        }
     }
 }
 
