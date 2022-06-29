@@ -52,6 +52,24 @@ a:visited {
     text-shadow: 2px 2px lightgray;
 }
 
+@media only screen and (min-width: 768px) {
+.controller {
+    display: none;
+    margin-top:20px;
+    text-align:center;
+}
+}
+
+@media only screen and (max-width: 768px) {
+  /* For mobile phones: */
+  .controller {
+    display:block;
+    margin-top:20px;
+    text-align:center;
+  }
+}
+
+
 </style>
 <body>
 <div id="container">
@@ -64,6 +82,15 @@ a:visited {
 <img id="ufo-left" src="https://imgur.com/jZyZ6E3.gif" width="50px" alt="ufo-left" style="position:absolute; opacity:0">
 </div>
 </div>
+
+<div class="controller">
+    <button onclick="moveup()">UP</button><br><br>
+    <button onclick="moveleft()">LEFT</button>
+    <button onclick="moveright()">RIGHT</button><br><br>
+    <button onclick="movedown()">DOWN</button>
+</div>
+
+</div>
 <script>
 var block=document.getElementById('block');
 var container=document.getElementById('container');
@@ -75,9 +102,58 @@ var title=document.getElementById('ufo-title');
 
 var blockLeft = 475;
 var blockTop = 300;
+var upbutton = []
 
+function moveup() {
+    title.style.opacity=0;
+        blockTop -=10;
+        block.style.top = blockTop + 'px';
+        if (blockTop <= 0) {
+            blockTop = 0;
+            block.style.top= 0 + 'px';
+        }
+}
+
+function movedown() {
+    title.style.opacity=0;
+        blockTop +=10;
+        if (blockTop >0 && blockTop <=maxheight) {
+            block.style.top= blockTop + 'px';
+        }
+        if (blockTop >=maxheight) {
+            blockTop = 450;
+            block.style.top = 450 + 'px';
+        }
+}
+
+function moveleft() {
+
+        title.style.opacity=0;
+        blockLeft -=10;
+        block.style.left = blockLeft + 'px';
+        if (blockLeft <= 0) {
+            blockLeft = 0;
+            block.style.left = 0 + 'px';
+        }
+        ufor.style.opacity = 0;
+        ufol.style.opacity = 1;
+}
+
+function moveright() {
+    title.style.opacity=0;
+        blockLeft +=10;
+        if (blockLeft >0 && blockLeft <= maxwidth) {
+        block.style.left = blockLeft + 'px';
+        }
+        if (blockLeft >= maxwidth) {
+            blockLeft = 950;
+            block.style.left = 950 + 'px';
+        }
+        ufol.style.opacity = 0;
+        ufor.style.opacity = 1;
+}
 function anim(e){
-
+    //right
     if (e.keyCode==39) {
         title.style.opacity=0;
         blockLeft +=10;
@@ -91,7 +167,7 @@ function anim(e){
         ufol.style.opacity = 0;
         ufor.style.opacity = 1;
     }
-
+    //left
     if (e.keyCode==37) {
         title.style.opacity=0;
         blockLeft -=10;
@@ -103,7 +179,7 @@ function anim(e){
         ufor.style.opacity = 0;
         ufol.style.opacity = 1;
     }
-
+    //up
     if (e.keyCode==38) {
         title.style.opacity=0;
         blockTop -=10;
@@ -113,7 +189,7 @@ function anim(e){
             block.style.top= 0 + 'px';
         }
     }
-
+    //down
     if (e.keyCode==40) {
         title.style.opacity=0;
         blockTop +=10;
